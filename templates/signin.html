@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<form action="{% url 'signinuser' %}" method="POST" class="text-center mx-5 my-5">
+    {% csrf_token %} 
+    <input type="text" class="form-control" placeholder="Username" name="username">
+    <input type="password" name="password" class="form-control" placeholder="Enter Password">
+    <button type="submit" class="btn btn-primary">Sign In</button>
+</form>
+
+{% endblock content %}
+

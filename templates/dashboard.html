@@ -1,0 +1,43 @@
+{% extends 'dash_base.html' %}
+
+{% block content %}
+
+<div class="row">
+    <div class="text-center">
+        <h2>Welcome to my {{title}} app</h2>
+    </div>
+    <div class="col-md-6">
+        <h4>{{request.user.email}}</h4>
+        <h4>{{request.user}}</h4>
+        <form action="{% url 'signoutuser' %}" method="GET">
+            <button type="submit" class="btn btn-primary">Signout</button>
+        </form>
+    </div>
+    <div class="col-md-6">
+        <div class="text-center">
+            <h4>My Notes</h4>
+            <form method="GET" action="{% url 'addtask' %}">
+                <button type="submit" class="btn btn-primary mb-4">Add Note</button>
+            </form>
+        </div>
+        {% if todos %}
+        {% for todo in todos %}
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">{{todo.title}}</h5>
+                <h6 class="card-subtitle mb-2 text-muted">Created by {{request.user}}</h6>
+                <p class="card-text">{{todo.description}}</p>
+                <!-- <a href="#" class="card-link">Card link</a>
+                  <a href="#" class="card-link">Another link</a> -->
+            </div>
+        </div>
+        {% endfor %}
+        {% else %}
+        <div class="text-center">
+            <h3>You have no tasks</h3>
+        </div>
+        {% endif %}
+    </div>
+</div>
+
+{% endblock %}

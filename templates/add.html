@@ -1,0 +1,20 @@
+{% extends 'dash_base.html' %}
+
+{% block content %}
+
+<div class="text-center">
+    <h2>Add a new Task</h2>
+</div>
+
+<div class="row">
+    <div class="text-center">
+        <form method="POST" action="{% url 'addtask' %}">
+            {% csrf_token %}
+            <input name="title" type="text" class="form-control" placeholder="Title">
+            <input name="description" type="text" class="form-control" placeholder="Description">
+            <button type="submit" class="btn btn-primary">Add Task</button>
+        </form>
+    </div>
+</div>
+
+{% endblock %}
