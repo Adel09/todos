@@ -2,6 +2,12 @@
 
 {% block content %}
 
+{% if error %}
+<div class="alert alert-danger" role="alert">
+    {{error}}
+  </div>
+{% endif %}
+
 <form method="POST" action="{% url 'signupuser' %}" class="text-center mx-5 my-5">
     {% csrf_token %} 
     <input type="text" class="form-control" placeholder="Username" name="username">
